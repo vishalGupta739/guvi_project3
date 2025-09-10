@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill Result</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            width: 600px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4a4a4a;
+        }
+        table {
+            text-align: center;
+        }
+        .btn-custom {
+            background-color: #f67280;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #c94f60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📊 Bill Split Summary</h2>
+        <p class="text-center"><strong>Total Bill:</strong> ₹{{ total_bill }}</p>
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Days Stayed</th>
+                    <th>Share (₹)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for name, days, share in shares %}
+                <tr>
+                    <td>{{ name }}</td>
+                    <td>{{ days }}</td>
+                    <td><b>₹{{ share }}</b></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <a href="/" class="btn btn-custom mt-3">🔙 Go Back</a>
+        </div>
+    </div>
+</body>
+</html>
